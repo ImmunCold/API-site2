@@ -6,13 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AcquaTec | Cadastro</title>
+    <title>ImmunCold | Cadastro</title>
 
 
-    <script src="./js/funcoes.js"></script>
+    <script src="js/funcoes.js"></script>
 
-
-    <link rel="icon" href="./assets/icon/favicon.ico">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
@@ -35,7 +33,7 @@
                 <li>
                     <a href="./simulador.html">Simulador</a>
                 </li>
-                <li>|</li>
+                <li></li>
                 <li>
                     <a href="./login.html">Login</a>
                 </li>
@@ -49,62 +47,43 @@
 
 
     <div class="banner">
-        <div class="alerta_erro">
+        <div class="container login">
             <div class="card_erro" id="cardErro">
                 <span id="mensagem_erro"></span>
             </div>
-        </div>
-        <div class="container tamanho-conteudo">
-            <div class="card medio">
+            <div class="card-cadastro">
                 <h2>Cadastrar</h2>
-                <div class="formulario">
+                    <form>
+                    <div class="cards_input nome">
+                    <input id="nomeInput" type="text" placeholder="Digite seu nome" required minlength="2" maxlength="50">
+                    <input id="representanteInput" type="text" placeholder="Digite o nome da empresa" required minlength="2" maxlength="50">
+                    </div>
 
-                    <!--
-                         Para inserir mais um campo, copie uma das inputs abaixo.
-                         Assim que inserir vá para o script abaixo.
-                     -->
+                    <div class="cards_cpnj">
+                    <input id="cnpjInput" type="text" placeholder="Digite seu CNPJ" required minlength="14" maxlength="18">
+                    <input id="cepInput" type="text" placeholder="Digite seu CEP" required maxlength="50">
+                    </div>
 
-                    <span class="tipo_campo">Nome:</span>
-                    <input id="nome_input" type="text" placeholder="Nome empresa">
-
-                    <span class="tipo_campo">Representante:</span>
-                    <input id="representante_input" type="text" placeholder="Seu nome">
-
-                    <span class="tipo_campo">Cnpj:</span>
-                    <input id="cnpj_input" type="text" placeholder="Cnpj">
-
-                    <span class="tipo_campo">Cep:</span>
-                    <input id="cep_input" type="text" placeholder="cep">
-
-                    <span class="tipo_campo">Endereco:</span>
-                    <input id="endereco_input" type="text" placeholder="Endereco">
-
-                    <span class="tipo_campo">Telefone:</span>
-                    <input id="telefone_input" type="text" placeholder="(xx)xxxx-xxxx">
-
-                    <span class="tipo_campo">E-mail:</span>
-                    <input id="email_input" type="text" placeholder="meuemail@provedor.com">
-
-                    <span class="tipo_campo">Senha:</span>
-                    <input id="senha_input" type="password" placeholder="******">
-
-                    <span class="tipo_campo">Confirmação da Senha:</span>
-                    <input id="confirmacao_senha_input" type="password" placeholder="******">
+                    <div class="cards_endereco">
+                    <input id="enderecoInput" type="text" placeholder="Digite seu endereço" required maxlength="150">
+                    <input id="telefoneInput" type="text" placeholder="(xx)xxxx-xxxx" required maxlength="14">
+                    </div>
+                    
+                    <div class="card_email">
+                    <input id="emailInput" type="text" placeholder="Digite seu email" required maxlength="65">
+                    </div>
+                    
+                    <div class="cards_senha">
+                    <input id="senhaInput" type="password" placeholder="******" required minlength="6" maxlength="25">
+                    <input id="confirmacaoSenhaInput" type="password" placeholder="******" required minlength="6" maxlength="25">
+                    </div>
 
                     <button class="btn" onclick="cadastrar()">Cadastrar</button>
-
-                </div>
-                <div id="div_aguardar" class="loading-div">
-                    <img src="./assets/circle-loading.gif" id="loading-gif">
-                </div>
-
-                <div id="div_erros_login">
-
+                </form>
                 </div>
             </div>
         </div>
-    </div>
-
+        </div>
     <!--footer inicio-->
     <div class="footer">
         <div class="container">
@@ -120,19 +99,19 @@
 
 <script>
     function cadastrar() {
-        aguardar();
+        // aguardar();
 
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
-        var nomeVar = nome_input.value;
-        var emailVar = email_input.value;
-        var senhaVar = senha_input.value;
-        var confirmacaoSenhaVar = confirmacao_senha_input.value;
-        var representanteVar = representante_input.value;
-        var cnpjVar = cnpj_input.value;
-        var cepVar = cep_input.value;
-        var enderecoVar = endereco_input.value;
-        var telefoneVar = telefone_input.value;
+        var nomeVar = nomeInput.value;
+        var emailVar = emailInput.value;
+        var senhaVar = senhaInput.value;
+        var confirmacaoSenhaVar = confirmacaoSenhaInput.value;
+        var representanteVar = representanteInput.value;
+        var cnpjVar = cnpjInput.value;
+        var cepVar = cepInput.value;
+        var enderecoVar = enderecoInput.value;
+        var telefoneVar = telefoneInput.value;
 
         if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
             cardErro.style.display = "block"
@@ -182,9 +161,6 @@
                 cepServer: cepVar,
                 enderecoServer: enderecoVar,
                 telefoneServer: telefoneVar
-
-
-
             })
         }).then(function (resposta) {
 
@@ -193,15 +169,13 @@
             if (resposta.ok) {
                 cardErro.style.display = "block"
                 mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
-                window.location = "login.html";
-                limparFormulario();
-                finalizarAguardar();
+                window.location = 'login.html';
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
+            
         });
 
         return false;

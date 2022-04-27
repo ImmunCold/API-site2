@@ -10,8 +10,7 @@
 
     <script src="./js/funcoes.js"></script>
 
-    <link rel="icon" href="./assets/icon/favicon.ico">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style_calculadora.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
@@ -23,13 +22,13 @@
     <!--header inicio-->
     <div class="header">
         <div class="container">
-            <h1 class="titulo">ImmunCold</h1>
+            <h1 class="title">ImmunCold</h1>
             <ul class="navbar">
                 <li>
                     <a href="./index.html">Inicio</a>
                 </li>
                 <li class="agora">Simulador</li>
-                <li>|</li>
+                <li></li>
                 <li>
                     <a href="./login.html">Login</a>
                 </li>
@@ -42,12 +41,12 @@
 
 
     <!-- simulador inicio -->
-    <div class="simulador">
-        <div class="container">
+    <div class="banner">
+        <div class="container login">
+            <div class="card-calculadora">
             <h2>Simulador financeiro</h2>
-            <div class="formulario">
-
-                <label>Quantidade de vacinas vendidas</label>
+                <form>
+                    <label>Quantidade de vacinas vendidas</label>
                    <input type="number" placeholder="Digite um valor. Ex: 0" id="input_qtda_vacinas_vendidas">
 
                    <label>Quantidade de vacinas descartadas</label>
@@ -57,14 +56,11 @@
                    <input type="number" placeholder="Digite um valor. Ex: 0" id="input_valor_pago">
 
                    <button onclick="calcular()">Calcular perda</button>
-
+                </form>
             </div>
-
-            <div id="div_resultado"></div>
-
         </div>
+        <p id="resultado"></p>
         </div>
-    </div>
     <!-- simulador fim -->
 
     <!--footer inicio-->
@@ -89,7 +85,7 @@
         var valPerdido = descarte * custoVacina
         var perdaPorc = valPerdido * 0.80
 
-        div_resultado.innerHTML = `Você ou seu cliente perdeu R$ ${valPerdido. toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} sem nossos serviços. 
+        resultado.innerHTML = `Você ou seu cliente perdeu R$ ${valPerdido. toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} sem nossos serviços. 
         Com a nossa contratação<br> você deixaria de perder 80% deste valor R$ ${perdaPorc. toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}`
     }
 </script>
