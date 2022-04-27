@@ -1,0 +1,189 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  background-color: #3498DB;
+  color: white;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title{
+  font-size: 23px;
+}
+
+.navbar {
+  display: flex;
+  list-style-type: none;
+  width: 300px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white;
+}
+
+/*.banner {
+  /*background-image: url('../Site-institucional/assets/img/bg-jelly-fish-para_outras_pags.png');*/
+
+.banner .container {
+  height: 350px;
+  display: flex;
+  color: white;
+  align-items: center;
+}
+
+
+.banner p {
+  font-size: 30px;
+  width: 300px;
+  margin: left 20%;
+}
+
+.footer {
+  background-color: #3498DB;
+  color: white;
+}
+
+.footer .container {
+  display: flex;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
+}
+
+.agora {
+  font-weight: bolder;
+  color: white;
+  border-bottom: 2px solid white;
+  padding-bottom: 3px;
+  cursor: pointer;
+}
+
+.agora:hover{
+  border-bottom:2px solid black;
+  transition: 0.5s;
+}
+
+.card .h2 {
+  margin: 0;
+}
+
+.banner .container.login {
+  justify-content: center;
+}
+
+
+.mychart{
+   margin: 20px;
+  box-shadow: 0 4px 80px 0 rgba(0, 0, 0, 0.2);
+  width: 500px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mychart2{
+  margin: 20px;
+  box-shadow: 0 4px 80px 0 rgba(0, 0, 0, 0.2);
+  width: 500px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.metricas{
+  width: 200px;
+  height: 130px;
+  float: left;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  border-radius: 3px;
+  margin-left: 10px;
+  position: relative;
+}
+
+.metricas.muitofrio{
+  background-color: blue;
+  color: white;
+}
+
+.metricas.alertafrio{
+  background-color: purple;
+  color: white;
+}
+
+
+.metricas.ideal{
+  background-color: green;
+  color: white;
+}
+
+.metricas.alertaquente{
+  background-color: orange;
+  color: white;
+}
+
+.metricas.muitoquente{
+  background-color: red;
+  color: white;
+}
+
+.sensores{
+  box-shadow:0 4px 40px 0 rgba(0, 0, 0, 0.2);
+  float: left;
+  position: relative;
+  width: 300px;
+  height: 150px;
+  background-color: red;
+  color: white;
+  border-radius: 3px;
+  margin: 10px;
+}
+
+.sensores h2{
+  margin-left: 10px;
+}
+
+.sensores h1{
+  margin-left: 10px;
+  border-bottom: 1px solid white;
+  margin-right: 10px;
+}
+
+.sensores.alertafrio{
+  background-color: purple;
+}
+
+.sensores.alertaquente{
+  background-color: orange;
+}
+
+.sensores.muitofrio{
+  background-color: blue;
+}
+
+.sensores.ideal{
+  background-color: green;
+}

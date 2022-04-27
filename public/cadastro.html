@@ -60,13 +60,13 @@
                     </div>
 
                     <div class="cards_cpnj">
-                    <input id="cnpjInput" type="text" placeholder="Digite seu CNPJ" required minlength="14" maxlength="18">
-                    <input id="cepInput" type="text" placeholder="Digite seu CEP" required maxlength="50">
+                    <input id="cnpjInput" type="text" placeholder="Digite seu CNPJ" required minlength="14" maxlength="14">
+                    <input id="cepInput" type="text" placeholder="Digite seu CEP" required minlength="8"   maxlength="8">
                     </div>
 
                     <div class="cards_endereco">
                     <input id="enderecoInput" type="text" placeholder="Digite seu endereço" required maxlength="150">
-                    <input id="telefoneInput" type="text" placeholder="(xx)xxxx-xxxx" required maxlength="14">
+                    <input id="telefoneInput" type="text" placeholder="Telefone (xx)xxxx-xxxx" required maxlength="14">
                     </div>
                     
                     <div class="card_email">
@@ -78,7 +78,7 @@
                     <input id="confirmacaoSenhaInput" type="password" placeholder="******" required minlength="6" maxlength="25">
                     </div>
 
-                    <button class="btn" onclick="cadastrar()">Cadastrar</button>
+                    <button class="btn" type="button" onclick="cadastrar()">Cadastrar</button>
                 </form>
                 </div>
             </div>
@@ -99,7 +99,6 @@
 
 <script>
     function cadastrar() {
-        // aguardar();
 
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
@@ -116,18 +115,14 @@
         if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Preencha todos os campos para prosseguir!";
-
-            finalizarAguardar();
             return false;
-        }
-        else {
+        }else {
             setInterval(sumirMensagem, 5000)
         }
 
-        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
+        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1 || emailVar.length < 7) {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Ops, e-mail inválido! Verifique e tente novamente.";
-            finalizarAguardar();
             return false;
         }
         else {
@@ -137,7 +132,6 @@
         if (senhaVar != confirmacaoSenhaVar) {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "As senhas inseridas devem ser iguais para prosseguir!";
-            finalizarAguardar();
             return false;
         }
         else {
