@@ -48,34 +48,57 @@
 
     <div class="banner">
         <div class="container login">
-            <div class="card_erro" id="cardErro">
-                <span id="mensagem_erro"></span>
-            </div>
             <div class="card-cadastro">
                 <h2>Cadastrar</h2>
                     <form>
                     <div class="cards_input nome">
-                    <input id="nomeInput" type="text" placeholder="Digite seu nome" required minlength="2" maxlength="50">
-                    <input id="representanteInput" type="text" placeholder="Digite o nome da empresa" required minlength="2" maxlength="50">
+                    <input id="nomeInput" type="text" placeholder="Digite seu nome" onkeyup="keyNome()" required minlength="2" maxlength="50">
+                    <input id="representanteInput" type="text" placeholder="Digite o nome da empresa" onkeyup="keyNomeEmpresa()" required minlength="2" maxlength="50">
+                    </div>
+
+                    <div>
+                    <span id="span_nome">Valido</span>
+                    <span id="span_nome_empresa">Valido</span>
                     </div>
 
                     <div class="cards_cpnj">
-                    <input id="cnpjInput" type="text" placeholder="Digite seu CNPJ" required minlength="14" maxlength="14">
-                    <input id="cepInput" type="text" placeholder="Digite seu CEP" required minlength="8"   maxlength="8">
+                    <input id="cnpjInput" type="text" placeholder="Digite seu CNPJ" onkeyup="keyCnpj()" required minlength="14" maxlength="14">
+                    
+                    <input id="cepInput" type="text" placeholder="Digite seu CEP" onkeyup="keyCep()" required minlength="8"   maxlength="8">
+                    </div>
+
+                    <div>
+                    <span id="span_cnpj">Valido</span>
+                    <span id="span_cep">Valido</span>
                     </div>
 
                     <div class="cards_endereco">
-                    <input id="enderecoInput" type="text" placeholder="Digite seu endereço" required maxlength="150">
-                    <input id="telefoneInput" type="text" placeholder="Telefone (xx)xxxx-xxxx" required maxlength="14">
-                    </div>
+                    <input id="enderecoInput" type="text" placeholder="Digite seu endereço" onkeyup="keyEndereco()" required maxlength="150">
                     
+                    <input id="telefoneInput" type="text" placeholder="Telefone (xx)xxxx-xxxx" onkeyup="keyTelefone()" required maxlength="14">
+                    </div>
+
+                    <div>
+                    <span id="span_endereco">Valido</span>
+                    <span id="span_telefone">Valido</span>
+                    </div>
+
                     <div class="card_email">
-                    <input id="emailInput" type="text" placeholder="Digite seu email" required maxlength="65">
+                    <input id="emailInput" type="text" placeholder="Digite seu email" onkeyup="keyEmail()" required maxlength="65">
+                    </div>
+
+                    <div>
+                    <span id="span_email">Valido</span>
                     </div>
                     
                     <div class="cards_senha">
-                    <input id="senhaInput" type="password" placeholder="******" required minlength="6" maxlength="25">
-                    <input id="confirmacaoSenhaInput" type="password" placeholder="******" required minlength="6" maxlength="25">
+                    <input id="senhaInput" type="password" placeholder="******" onkeyup="keySenha()" required minlength="6" maxlength="25">
+                    <input id="confirmacaoSenhaInput" type="password" placeholder="******" onkeyup="keyConfSenha()" required minlength="6" maxlength="25">
+                    </div>
+                     
+                    <div>
+                    <span id="span_senha">Valido</span>
+                    <span id="span_conf_senha">Valido</span>
                     </div>
 
                     <button class="btn" type="button" onclick="cadastrar()">Cadastrar</button>
@@ -98,6 +121,24 @@
 </html>
 
 <script>
+
+ function keyNome() {
+
+     var nome = nomeInput.value
+
+     if (nome.length > -1 && nome.length < 3) {
+
+         span_nome.innerHTML = `<span style='color: red;'> Nome invalido </span>`
+
+     } else {
+
+         span_nome.innerHTML = `<span style='color: green;'> Nome Valído </span>`
+     }
+ }
+
+
+
+
     function cadastrar() {
 
         //Recupere o valor da nova input pelo nome do id
