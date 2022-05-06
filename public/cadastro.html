@@ -33,7 +33,6 @@
                 <li>
                     <a href="./simulador.html">Simulador</a>
                 </li>
-                <li></li>
                 <li>
                     <a href="./login.html">Login</a>
                 </li>
@@ -49,59 +48,59 @@
     <div class="banner">
         <div class="container login">
             <div class="card-cadastro">
-                <h2>Cadastrar</h2>
+                <h2 class="cadastro">Cadastrar</h2>
                     <form>
                     <div class="cards_input nome">
                     <input id="nomeInput" type="text" placeholder="Digite seu nome" onkeyup="keyNome()" required minlength="2" maxlength="50">
                     <input id="representanteInput" type="text" placeholder="Digite o nome da empresa" onkeyup="keyNomeEmpresa()" required minlength="2" maxlength="50">
                     </div>
 
-                    <div>
-                    <span id="span_nome">Valido</span>
-                    <span id="span_nome_empresa">Valido</span>
+                    <div class="div1">
+                    <span id="span_nome"></span>
+                    <span id="span_nome_empresa"></span>
                     </div>
 
                     <div class="cards_cpnj">
-                    <input id="cnpjInput" type="text" placeholder="Digite seu CNPJ" onkeyup="keyCnpj()" required minlength="14" maxlength="14">
+                    <input id="cnpjInput" type="number" placeholder="Digite seu CNPJ" onkeyup="keyCnpj()" required minlength="14" maxlength="14">
                     
-                    <input id="cepInput" type="text" placeholder="Digite seu CEP" onkeyup="keyCep()" required minlength="8"   maxlength="8">
+                    <input id="cepInput" placeholder="Digite seu CEP" onkeyup="keyCep()" required minlength="8"   maxlength="8">
                     </div>
 
-                    <div>
-                    <span id="span_cnpj">Valido</span>
-                    <span id="span_cep">Valido</span>
+                    <div class="div2">
+                    <span id="span_cnpj">Inserir somente os numeros</span>
+                    <span id="span_cep">Inserir somente os numeros</span>
                     </div>
 
                     <div class="cards_endereco">
                     <input id="enderecoInput" type="text" placeholder="Digite seu endereço" onkeyup="keyEndereco()" required maxlength="150">
                     
-                    <input id="telefoneInput" type="text" placeholder="Telefone (xx)xxxx-xxxx" onkeyup="keyTelefone()" required maxlength="14">
+                    <input id="telefoneInput" type="number" placeholder="Telefone (xx)xxxx-xxxx" onkeyup="keyTelefone()" required maxlength="13">
                     </div>
 
-                    <div>
-                    <span id="span_endereco">Valido</span>
-                    <span id="span_telefone">Valido</span>
+                    <div class="div3">
+                    <span id="span_endereco"> Inserir o numero do local</span>
+                    <span id="span_telefone"> Inserir somente os numeros </span>
                     </div>
 
                     <div class="card_email">
                     <input id="emailInput" type="text" placeholder="Digite seu email" onkeyup="keyEmail()" required maxlength="65">
                     </div>
 
-                    <div>
-                    <span id="span_email">Valido</span>
+                    <div class="div4">
+                    <span id="span_email"></span>
                     </div>
                     
                     <div class="cards_senha">
-                    <input id="senhaInput" type="password" placeholder="******" onkeyup="keySenha()" required minlength="6" maxlength="25">
-                    <input id="confirmacaoSenhaInput" type="password" placeholder="******" onkeyup="keyConfSenha()" required minlength="6" maxlength="25">
+                    <input id="senhaInput" type="password" placeholder="Digite sua senha" onkeyup="keySenha()" required minlength="6" maxlength="25">
+                    <input id="confirmacaoSenhaInput" type="password" placeholder="Confirme a sua Senha" onkeyup="keyConfSenha()" required minlength="6" maxlength="25">
                     </div>
                      
-                    <div>
-                    <span id="span_senha">Valido</span>
-                    <span id="span_conf_senha">Valido</span>
+                    <div class="div5">
+                    <span id="span_senha">A senha deve conter: No minímo de (6) Numeros</span>
+                    <span id="span_conf_senha"></span>
                     </div>
 
-                    <button class="btn" type="button" onclick="cadastrar()">Cadastrar</button>
+                    <button id="button" class="btn" type="button" onclick="cadastrar()">Cadastrar</button>
                 </form>
                 </div>
             </div>
@@ -122,19 +121,130 @@
 
 <script>
 
+      var senha_externa = 0
+
  function keyNome() {
 
      var nome = nomeInput.value
 
      if (nome.length > -1 && nome.length < 3) {
 
-         span_nome.innerHTML = `<span style='color: red;'> Nome invalido </span>`
+         span_nome.innerHTML = `<span style='color: red;'> Nome inválido </span>`
 
      } else {
 
-         span_nome.innerHTML = `<span style='color: green;'> Nome Valído </span>`
+         span_nome.innerHTML = `<span style='color: green;'> Nome Válido </span>`
      }
  }
+
+ function keyNomeEmpresa(){
+     
+     var nomeEmpresa = representanteInput.value
+
+     if (nomeEmpresa.length > -1 && nomeEmpresa.length < 3) {
+
+        span_nome_empresa.innerHTML =  `<span style='color: red;'> Nome da Empresa inválido </span>`
+     
+      } else {
+
+        span_nome_empresa.innerHTML = `<span style='color: green;'> Nome da Empresa Válido </span>`
+     }
+ }
+
+  function keyCnpj() {
+
+     var cnpj = cnpjInput.value
+     var cnpjQnt = cnpj.length
+
+     if (cnpj.length > -1 && cnpj.length == 14) {
+
+        span_cnpj.innerHTML = `<span style='color: green;'> Cnpj Válido </span>`
+
+     } else {
+
+        span_cnpj.innerHTML =  `<span style='color: red;'> Cnpj inválido (Necessita de 14 caracteres) </span>`
+     }
+  }
+
+  function keyCep(){
+
+    var cep = cepInput.value
+
+    if (cep.length > -1 && cep.length == 8) {
+
+         span_cep.innerHTML = `<span style='color: green;'> Cep Válido </span>`
+
+    } else {
+
+         span_cep.innerHTML =  `<span style='color: red;'> Cep inválido </span>`
+    }
+
+}
+
+    function keyEndereco() {
+
+        var endereco = enderecoInput.value
+
+        if (endereco.length > -1 && endereco.length < 40 && endereco.indexOf(",") > -1) {
+
+            span_endereco.innerHTML = `<span style='color: green;'> Endereço Válido </span>`
+
+        } else {
+
+            span_endereco.innerHTML = `<span style='color: red;'> Endereço Inválido (Necessita Da "," e o n° do local) </span>` 
+
+        }
+  }
+
+   function keyTelefone(){
+       var telefone = telefoneInput.value
+
+       if (telefone.length > -1 && telefone.length >= 10 && telefone.length <= 13) {
+
+           span_telefone.innerHTML = `<span style='color: green;'> Telefone Válido </span>`
+
+       } else {
+
+           span_telefone.innerHTML = `<span style='color: red;'> Telefone Inválido </span>`
+       }
+   }
+
+  function keySenha() {
+     
+     var senha = senhaInput.value
+
+     senha_externa = senha
+
+     var conta = 6 - senha.length
+
+     if (senha.length > -1 && senha.length <= 6) {
+
+        span_senha.innerHTML = `A senha deve conter: No minímo mais (${conta}) Numeros`
+     
+    } else {
+
+        span_senha.innerHTML = `Senha <span style='color:green;'>OK</span>`   
+
+    }
+
+  }
+
+  function keyConfSenha(){
+      
+      var confSenha = confirmacaoSenhaInput.value
+
+      span_conf_senha.innerHTML = `${confSenha}` 
+
+      if (confSenha == senha_externa) {
+         
+        span_conf_senha.innerHTML = `<span style='color:green;'> Senha OK </span>`   
+
+      } else {
+
+        span_conf_senha.innerHTML = `<span style='color:red;'> Senha Incompativel </span>` 
+
+      }
+  }
 
 
 
