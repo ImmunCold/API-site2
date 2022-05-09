@@ -11,6 +11,7 @@ body {
   height: 50px;
   display: flex;
   align-items: center;
+  border-bottom: 1px solid white;
 }
 
 .header .container {
@@ -25,9 +26,10 @@ body {
 .navbar {
   display: flex;
   list-style-type: none;
-  width: 300px;
+  width: 12vw;
   justify-content: space-between;
   align-items: center;
+  
 }
 
 .container {
@@ -44,7 +46,7 @@ body {
   /*background-image: url('../Site-institucional/assets/img/bg-jelly-fish-para_outras_pags.png');*/
 
 .banner .container {
-  height: 350px;
+  height: 180px;
   display: flex;
   color: white;
   align-items: center;
@@ -86,29 +88,40 @@ body {
   margin: 0;
 }
 
+
 .banner .container.login {
   justify-content: center;
 }
 
 
 .mychart{
-   margin: 20px;
+  margin: 0px;
   box-shadow: 0 4px 80px 0 rgba(0, 0, 0, 0.2);
   width: 500px;
   height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
+  display: none;
 }
 
 .mychart2{
-  margin: 20px;
+  margin: 0px;
   box-shadow: 0 4px 80px 0 rgba(0, 0, 0, 0.2);
+  margin-left: 15px;
   width: 500px;
   height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
+  display: none;
+}
+
+@keyframes n1 {
+
+  from {width: 0px;}
+  to {width: 200px;}
+
 }
 
 
@@ -120,34 +133,47 @@ body {
   text-align: center;
   justify-content: center;
   border-radius: 3px;
-  margin-left: 10px;
   position: relative;
 }
 
 .metricas.muitofrio{
-  background-color: blue;
+  background-color: rgb(96, 0, 151);;
   color: white;
+  animation-name: n1;
+  animation-duration: 3s;
 }
 
 .metricas.alertafrio{
-  background-color: purple;
+  background-color: rgb(60, 57, 250);
   color: white;
+  margin-left: 15px;
+  animation-name: n1;
+  animation-duration: 4s;
 }
 
 
 .metricas.ideal{
   background-color: green;
   color: white;
+  margin-left: 15px;
+  animation-name: n1;
+  animation-duration: 5s;
 }
 
 .metricas.alertaquente{
-  background-color: orange;
+  background-color: rgb(255, 215, 0);
   color: white;
+  margin-left: 15px;
+  animation-name: n1;
+  animation-duration: 6s;
 }
 
 .metricas.muitoquente{
   background-color: red;
   color: white;
+  margin-left: 15px;
+  animation-name: n1;
+  animation-duration: 7s;
 }
 
 .sensores{
@@ -159,7 +185,8 @@ body {
   background-color: red;
   color: white;
   border-radius: 3px;
-  margin: 10px;
+  margin: 0px;
+  display: none;
 }
 
 .sensores h2{
@@ -178,6 +205,8 @@ body {
 
 .sensores.alertaquente{
   background-color: orange;
+  margin-bottom: 90px;
+  margin-left: 15px;
 }
 
 .sensores.muitofrio{
@@ -186,4 +215,29 @@ body {
 
 .sensores.ideal{
   background-color: green;
+}
+
+.option {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2vh;
+  width: 20%;
+}
+
+.localV{
+  background-color: #3498DB;
+  display: flex;
+  height: 300px;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.textV{
+  color: white;
+  font-size: 30px;
+}
+
+.delivery {
+  background-size: 200px;
 }
