@@ -47,10 +47,25 @@ body {
   /*background-image: url('../Site-institucional/assets/img/bg-jelly-fish-para_outras_pags.png');*/
 
 .banner .container {
-  height: 180px;
+  height: 40vh;
   display: flex;
   color: white;
   align-items: center;
+}
+
+.banner2 .container {
+  height: 70vh;
+  display: flex;
+  color: white;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#container3 {
+  border: 2px solid rgb(204, 204, 204);
+  box-shadow: 0 4px 80px 0 rgba(0, 0, 0, 0.2);
+  height: 60vh;
+  padding-top: 10px;
 }
 
 
@@ -96,7 +111,7 @@ body {
 
 
 .mychart{
-  margin: 0px;
+  border: 2px solid rgb(204, 204, 204);
   box-shadow: 0 4px 80px 0 rgba(0, 0, 0, 0.2);
   width: 500px;
   height: 300px;
@@ -108,6 +123,7 @@ body {
 
 .mychart2{
   margin: 0px;
+  border: 2px solid rgb(204, 204, 204);
   box-shadow: 0 4px 80px 0 rgba(0, 0, 0, 0.2);
   margin-left: 30px;
   width: 500px;
@@ -181,12 +197,12 @@ body {
   box-shadow:0 4px 40px 0 rgba(0, 0, 0, 0.2);
   float: left;
   position: relative;
-  width: 300px;
-  height: 150px;
+  width: 220px;
+  height: 120px;
   background-color: red;
   color: white;
   border-radius: 3px;
-  margin: 0px 0px 90px 0px;
+  margin: 0px 0px 90px 10px;
   display: block;
 }
 
@@ -218,13 +234,39 @@ body {
   background-color: green;
 }
 
-.option {
+.container .comp1 {
+  height: 30vh;
+}
+
+.comp1 {
   display: flex;
+  width: 15%;
   flex-direction: column;
-  justify-content: space-between;
-  margin-top: 1vh;
-  margin-bottom: 10vh;
-  width: 100%;
+  align-items: center;
+  margin-bottom: 2vh;
+}
+
+.comp2 {
+  display: flex;
+  width: 15%;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2vh;
+  margin-left: 5px;
+}
+
+.gifC {
+  width: 50%;
+  height: 16.8vh;
+  margin-bottom: -29px;
+}
+
+.gifG {
+  margin: 10px 0px;
+  width: 30%;
+  height: 11.7vh;
+  margin-bottom: 5px;
+  margin-top: 16px;
 }
 
 .localV{
@@ -255,13 +297,39 @@ body {
   border-radius: 3px 3px 3px 3px;
 }
 
+.textL{
+width: 100%;
+color: #3498DB;
+font-size: 30px;
+font-weight: 700;
+height: 10vh;
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 5px;
+padding: 10px;
+border-top: 2px solid rgb(204, 204, 204) ;
+}
+
+.textA{
+  width: 100%;
+  color: #3498DB;
+  font-size: 30px;
+  font-weight: 700;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2px;
+  }
+
 .delivery {
   background-size: 200px;
 }
 
 #selectSensores {
   padding: 5px;
-  width: 30%;
+  width: 100%;
   border-radius: 5px;
   border: 2px solid gray;
 }
@@ -269,11 +337,10 @@ body {
 .divHistorico{
   display: flex;
   justify-content: center;
-  height: 45vh;
+  height: 50vh;
   width: 60%;
   border: 2px solid rgb(190, 190, 190);
-  margin: 0px 0px 130px 50px;
-  box-shadow:0 4px 40px 0 rgba(0, 0, 0, 0.2);
+  margin: 0px 30px 0px 30px;
 }
 
 .nomeH {
@@ -290,29 +357,4 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.gifC {
-  width: 10%;
-  height: 10vh;
-  margin-bottom: -15px;
-}
-
-.gifG {
-  margin: 10px 0px;
-  width: 6%;
-  height: 8vh;
-}
-
-.container .option{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.comp {
-  display: flex;
-  width: 50%;
-  flex-direction: column;
-  justify-content: center;
 }
