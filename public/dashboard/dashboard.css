@@ -35,6 +35,7 @@ body {
 .container {
   width: 80%;
   margin: 0 auto;
+  display: flex;
 }
 
 .navbar a {
@@ -102,25 +103,25 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  display: none;
+  display: block;
 }
 
 .mychart2{
   margin: 0px;
   box-shadow: 0 4px 80px 0 rgba(0, 0, 0, 0.2);
-  margin-left: 15px;
+  margin-left: 30px;
   width: 500px;
   height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
-  display: none;
+  display: block;
 }
 
 @keyframes n1 {
 
-  from {width: 0px;}
-  to {width: 200px;}
+  from {height: 0px;}
+  to {height: 130px;}
 
 }
 
@@ -148,7 +149,7 @@ body {
   color: white;
   margin-left: 15px;
   animation-name: n1;
-  animation-duration: 4s;
+  animation-duration: 3s;
 }
 
 
@@ -157,7 +158,7 @@ body {
   color: white;
   margin-left: 15px;
   animation-name: n1;
-  animation-duration: 5s;
+  animation-duration: 3s;
 }
 
 .metricas.alertaquente{
@@ -165,7 +166,7 @@ body {
   color: white;
   margin-left: 15px;
   animation-name: n1;
-  animation-duration: 6s;
+  animation-duration: 3s;
 }
 
 .metricas.muitoquente{
@@ -173,7 +174,7 @@ body {
   color: white;
   margin-left: 15px;
   animation-name: n1;
-  animation-duration: 7s;
+  animation-duration: 3s;
 }
 
 .sensores{
@@ -185,8 +186,8 @@ body {
   background-color: red;
   color: white;
   border-radius: 3px;
-  margin: 0px;
-  display: none;
+  margin: 0px 0px 90px 0px;
+  display: block;
 }
 
 .sensores h2{
@@ -205,7 +206,7 @@ body {
 
 .sensores.alertaquente{
   background-color: orange;
-  margin-bottom: 90px;
+  /* margin-bottom: 90px; */
   margin-left: 15px;
 }
 
@@ -219,14 +220,22 @@ body {
 
 .option {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  margin-top: 2vh;
-  width: 20%;
+  margin-top: 1vh;
+  margin-bottom: 10vh;
+  width: 100%;
 }
 
 .localV{
-  background-color: #3498DB;
+  background-image: url(../assets/img/v870-tang-15.jpg);
+  background-repeat: no-repeat;
+  background-position: 100%;
+  position: relative;
+  background-size: 2000px;
   display: flex;
+  flex-direction: column;
+  width: 100%;
   height: 300px;
   justify-content: center;
   align-items: center;
@@ -234,10 +243,76 @@ body {
 }
 
 .textV{
+  width: 30%;
+  height: 8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(204, 204, 204);
   color: white;
   font-size: 30px;
+  opacity: 0.8;
+  border-radius: 3px 3px 3px 3px;
 }
 
 .delivery {
   background-size: 200px;
+}
+
+#selectSensores {
+  padding: 5px;
+  width: 30%;
+  border-radius: 5px;
+  border: 2px solid gray;
+}
+
+.divHistorico{
+  display: flex;
+  justify-content: center;
+  height: 45vh;
+  width: 60%;
+  border: 2px solid rgb(190, 190, 190);
+  margin: 0px 0px 130px 50px;
+  box-shadow:0 4px 40px 0 rgba(0, 0, 0, 0.2);
+}
+
+.nomeH {
+  width: 100%;
+  color: #3498DB;
+  font-weight: 600;
+  font-size: 20px;
+  margin-top: 5px;
+  height: 30px;
+  border-bottom: 1px solid rgb(209, 208, 208);
+}
+
+.container .nomeH{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gifC {
+  width: 10%;
+  height: 10vh;
+  margin-bottom: -15px;
+}
+
+.gifG {
+  margin: 10px 0px;
+  width: 6%;
+  height: 8vh;
+}
+
+.container .option{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.comp {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  justify-content: center;
 }
