@@ -6,10 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ImmunCold | Simulador Financeiro</title>
+    <title>IMMUNCOLD | SIMULADOR FINANCEIRO</title>
 
     <script src="./js/funcoes.js"></script>
 
+    <link rel="icon" href="../public/assets/img/logo_icon_nav.png">
     <link rel="stylesheet" href="./css/style_calculadora.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
@@ -22,7 +23,7 @@
     <!--header inicio-->
     <div class="header">
         <div class="container">
-            <h1 class="title">ImmunCold</h1>
+            <p class="title">IMMUNCOLD</p>
             <ul class="navbar">
                 <li>
                     <a href="./index.html">Inicio</a>
@@ -57,8 +58,8 @@
                    <button type="button" onclick="calcular()">Calcular perda</button>
                 </form>
             </div>
+            <div id="resultado"></div>
         </div>
-        <p id="resultado"></p>
         </div>
     <!-- simulador fim -->
 
@@ -84,7 +85,7 @@
         var valPerdido = descarte * custoVacina
         var perdaPorc = valPerdido * 0.80
 
-        resultado.innerHTML = `Você ou seu cliente perdeu R$ ${valPerdido. toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} sem nossos serviços. 
-        Com a nossa contratação<br> você deixaria de perder 80% deste valor R$ ${perdaPorc. toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}`
+        resultado.innerHTML = ` <div class="resultado_simulador">Notamos que você teve uma perda de: ${valPerdido. toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} sem nossos serviços. 
+        Com o <b>IMMUNCOLD</b> você deixaria de perder <b>80%</b> deste valor, equivalente á: ${perdaPorc. toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </div>`
     }
 </script>
