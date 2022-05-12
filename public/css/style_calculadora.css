@@ -173,8 +173,8 @@ form button:hover{
   box-shadow: 0 4px 80px 0 rgb(0, 0, 0, 0.2);
   border-radius: 5px;
   color: black;
-  width: 400px;
-  height: 200px;
+  width: 500px;
+  height: 300px;
   display: flex;
   text-align: center;
   flex-direction: column;
