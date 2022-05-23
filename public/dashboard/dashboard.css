@@ -64,8 +64,10 @@ body {
 #container3 {
   border: 2px solid rgb(204, 204, 204);
   box-shadow: 0 4px 80px 0 rgba(0, 0, 0, 0.2);
-  height: 60vh;
+  height: 200vh;
+  width: 90%;
   padding-top: 10px;
+  display: flex;
 }
 
 
@@ -113,8 +115,8 @@ body {
 .mychart{
   border: 2px solid rgb(204, 204, 204);
   box-shadow: 0 4px 80px 0 rgba(0, 0, 0, 0.2);
-  width: 500px;
-  height: 300px;
+  width: 400px;
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -126,8 +128,8 @@ body {
   border: 2px solid rgb(204, 204, 204);
   box-shadow: 0 4px 80px 0 rgba(0, 0, 0, 0.2);
   margin-left: 30px;
-  width: 500px;
-  height: 300px;
+  width: 400px;
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -234,16 +236,15 @@ body {
   background-color: green;
 }
 
-.container .comp1 {
-  height: 30vh;
+.contentSelect {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.comp1 {
+.contentSelect .container {
   display: flex;
-  width: 15%;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 2vh;
+  justify-content: center;
 }
 
 .comp2 {
@@ -251,19 +252,12 @@ body {
   width: 15%;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 2vh;
-  margin-left: 5px;
-}
-
-.gifC {
-  width: 50%;
-  height: 16.8vh;
-  margin-bottom: -29px;
+  margin-bottom: 10vh;
 }
 
 .gifG {
   margin: 10px 0px;
-  width: 30%;
+  width: 45%;
   height: 11.7vh;
   margin-bottom: 5px;
   margin-top: 16px;
