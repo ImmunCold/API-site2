@@ -46,12 +46,19 @@
                     <label for="senhaInput"> <img class="icon" src="assets/icons/passwordicon.png">Senha</label>
                     <input id="senhaInput" type="password" placeholder="******">
 
-                    <div class="esqueceu"> <a href="#"> Não tem cadastro? Cadastre-se ja! </a> </div>
+                    <div class="esqueceu"> <a href="cadastro.html"> Não tem cadastro? Cadastre-se ja! </a> </div>
 
                     <button type="button" onclick="entrar()">Entrar</button>
+                   
+                    <div class="cardredirecionar" id="cardredirecionar">
+                        <div id="mensagem_redirecionar"></div>
+                        </div>
+
                     </form>
                 </div>
+                <div class="cardErro" id="cardErro">
                 <div id="mensagem_erro"></div>
+                </div>
                 </div>
             </div>
 
@@ -77,22 +84,22 @@
 
         // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "Preencha todos os campos para prosseguir!";
+            cardErro.style.display = "block"    
+            mensagem_erro.innerHTML = "Preencha todos os campos <img src='assets/icons/icon_error.png'>";
+            
+            setInterval(sumirMensagem, 4000)
             return false;
         }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
+    
 
         if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Ops, e-mail inválido! Verifique e tente novamente.";
+            
+            setInterval(sumirMensagem, 4000)
             return false;
         }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
+
 
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
@@ -120,9 +127,12 @@
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
 
+                    cardredirecionar.style.display = "block"    
+                    mensagem_redirecionar.innerHTML = "<img src='assets/img/gif_loading.gif'>";
+
                     setTimeout(function () {
                         window.location = "dashboard/dashboard.html";
-                    }, 1000); // apenas para exibir o loading
+                    }, 4000); // apenas para exibir o loading
 
                 });
 
