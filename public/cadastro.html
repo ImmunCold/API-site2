@@ -103,6 +103,16 @@
 
                     <button id="button" class="btn" type="button" onclick="cadastrar()">Cadastrar</button>
                 </form>
+
+                    <div class="cardCadastro" id="cardCadastro">
+                    <div id="mensagem_erro_cadastro"></div>
+                    </div>
+
+
+                    <div class="cardCadastroload" id="cardCadastroload">
+                        <div id="mensagem_cadastro"></div>
+                        </div>
+
                 </div>
             </div>
         </div>
@@ -265,19 +275,22 @@
         var telefoneVar = telefoneInput.value;
 
         if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "Preencha todos os campos para prosseguir!";
+            cardCadastro.style.display = "block"
+            mensagem_erro_cadastro.innerHTML = "Preencha todos os campos <img src='assets/icons/icon_error.png'>";
+            setInterval(sumirMensagem, 4000)
             return false;
         }
         if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1 || emailVar.length < 7) {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "Ops, e-mail inválido! Verifique e tente novamente.";
+            cardCadastro.style.display = "block"
+            mensagem_erro_cadastro.innerHTML = "Ops, e-mail inválido! Verifique e tente novamente. <img src='assets/icons/icon_error.png'>";
+            setInterval(sumirMensagem, 4000)
             return false;
         }
 
         if (senhaVar != confirmacaoSenhaVar) {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "As senhas inseridas devem ser iguais para prosseguir!";
+            cardCadastro.style.display = "block"
+            mensagem_erro_cadastro.innerHTML = "As senhas inseridas devem ser iguais! <img src='assets/icons/icon_error.png'>";
+            setInterval(sumirMensagem, 4000)
             return false;
         }
 
@@ -304,7 +317,14 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                window.location = 'login.html';
+                /*window.location = 'login.html';*/
+
+                cardCadastroload.style.display = "block";
+                mensagem_cadastro.innerHTML = "Cadastro realizado com sucesso! redirecionando..<img src='assets/img/gif_loading.gif'>";
+
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, "4000")
             }
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
@@ -312,6 +332,10 @@
         });
 
         return false;
+    }
+
+    function sumirMensagem() {
+        cardCadastro.style.display = "none"
     }
 
 </script>

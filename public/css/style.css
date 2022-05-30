@@ -612,5 +612,59 @@
 
     }
 
+
+    .cardCadastro{
+        width: 250px;
+        height: 80px;
+        border: 2px solid red;
+        background-color: white;
+        position: absolute;
+        display: none;
+        justify-content: center;
+        text-align: center;
+        color: black;
+        border-radius: 3px;
+        /*margin-left: 70%;*/
+        margin-top: 5%;
+        box-shadow: 0 4px 40px 0 rgb(0, 0, 0, 0.2);
+    }
+
+    .cardCadastro img{
+        width: 30px;
+        height: 30px;
+    }
+
+    #mensagem_erro_cadastro{
+        margin-top: 15px;
+        font-size: 20px;
+    }
+  
+
+    .cardCadastroload{
+        width: 250px;
+        height: 120px;
+        border: 2px solid green;
+        background-color: white;
+        position: absolute;
+        display: none;
+        justify-content: center;
+        text-align: center;
+        color: black;
+        border-radius: 3px;
+        /*margin-left: 70%;*/
+        margin-top: 5%;
+        box-shadow: 0 4px 40px 0 rgb(0, 0, 0, 0.2);
+    }
+
+    .cardCadastroload img{
+        margin-top: 10px;
+        width: 40px;
+        height: 40px;
+    }
+
+    #mensagem_cadastro{
+        margin-top: 10px;
+        font-size: 20px;
+    }
   
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
