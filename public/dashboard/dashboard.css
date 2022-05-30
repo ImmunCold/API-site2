@@ -206,6 +206,7 @@ body {
   border-radius: 3px;
   margin: 0px 0px 90px 10px;
   display: block;
+  cursor: pointer;
 }
 
 .sensores h2{
@@ -284,12 +285,30 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(204, 204, 204);
+  background-color: #3498DB;
   color: white;
   font-size: 30px;
   opacity: 0.8;
   border-radius: 3px 3px 3px 3px;
 }
+
+
+.button_img{
+  width: 100px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.button_img img{
+  width: 40px;
+  height: 40px;
+}
+
 
 .textL{
 width: 100%;

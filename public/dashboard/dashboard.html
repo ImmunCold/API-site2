@@ -49,7 +49,7 @@ height: 65%;
     </div>
 
     <div class="localV">
-    <div class="textV"> Seja Bem-vindo, <span id="b_usuario"></span></div>
+    <div class="textV"> Seja Bem-vindo,<span id="b_usuario"></span></div>
   </div>
 
   <div class="container"> 
@@ -96,11 +96,27 @@ height: 65%;
               <h1>5°C</h1>
       </div>
 
+
+      <div onclick="popup(), obterDadosGrafico(4)"  style="background-color: green;" class="sensores" id="sensor1">
+        <h2>Sensor 1<h2>
+            <h1>5°C</h1>
+    </div>
+
+    <div onclick="popup(), obterDadosGrafico(4)"  style="background-color: green;" class="sensores" id="sensor1">
+        <h2>Sensor 1<h2>
+            <h1>5°C</h1>
+    </div>
+
+    <div onclick="popup(), obterDadosGrafico(4)"  style="background-color: green;" class="sensores" id="sensor1">
+        <h2>Sensor 1<h2>
+            <h1>5°C</h1>
+    </div>
+
      
-          <div onclick="popup2(), obterDadosGrafico(5)" style="background-color: rgb(255, 215, 0);" class="sensores alertaquente" id="sensor2">
+          <!--<div onclick="popup2(), obterDadosGrafico(5)" style="background-color: rgb(255, 215, 0);" class="sensores alertaquente" id="sensor2">
               <h2>Sensor 2<h2>
                   <h1>7°C</h1>
-          </div>
+          </div>-->
 
   
   
@@ -111,13 +127,13 @@ height: 65%;
 
             <div id="popup" class="popup">
                 <canvas id="myChart"></canvas>
-                <button onclick="fechar()">Fechar</button>
+                <button class="button_img" onclick="fechar()"><img src="../assets/icons/icon_error.png"></button>
             </div>
         
           
             <div id="popup2" class="popup">
                 <canvas id="myChart2"></canvas>
-                <button onclick="fechar()">Fechar</button>
+                <button class="button_img" onclick="fechar()"><img src="../assets/icons/icon_error.png"></button>
             </div>
 
         </div>
@@ -142,6 +158,18 @@ height: 65%;
   function popup() {
   document.getElementById('popup').style.display = 'block'
   }
+
+
+  //function popup2() {
+  //document.getElementById('popup2').style.display = 'block'
+  //}
+
+  function fechar(){
+    document.getElementById('popup').style.display = 'none'
+    //document.getElementById('popup2').style.display = 'none'
+  }
+
+
 
   // function popup2() {
   // document.getElementById('popup2').style.display = 'block'

@@ -1,60 +1,62 @@
--- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
--- Você precisa executar os comandos no banco de dados para criar as tabelas,
--- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
+create database immuncold;
+use immuncold;
 
-/* para workbench - local - desenvolvimento */
-CREATE DATABASE acquatec;
+create table empresa (
+id_empresa int not null primary key auto_increment,
+nome varchar(255) not null,
+representante varchar(255) not null,
+cnpj varchar(25) not null unique,
+cep varchar(50),
+endereco varchar(150),
+telefone varchar(14) not null unique,
+email varchar(100) not null unique,
+senha varchar(25)not null) auto_increment = 1000;
 
-USE acquatec;
-
-CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50)
+create table usuario (
+id_usuario int not null primary key auto_increment,
+nome_usuario varchar (255) not null,
+telefone_usuario int,
+email_usuario varchar (255) unique not null,
+senha_usuario varchar (25),
+fk_empresa int,
+foreign key (fk_empresa) references empresa (id_empresa)
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-    descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
-); 
+create table localidade (
+id_localidade int not null primary key auto_increment,
+tipo varchar(13) not null,
+check (tipo = 'Transporte' or tipo = 'Armazenamento'),
+endereco_localidade varchar(150) not null,
+identificador varchar(25) not null);
 
-CREATE TABLE medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	temperatura DECIMAL,
-	umidade DECIMAL,
-	momento DATETIME,
-	fk_aquario INT
-);
+create table sensor (
+id_sensor int not null primary key auto_increment,
+fk_empresa int not null,
+foreign key (fk_empresa)
+references empresa(id_empresa),
+fk_localidade int not null,
+foreign key (fk_localidade)
+references localidade(id_localidade));
 
+create table parametro (
+id_parametro int not null primary key auto_increment,
+nome_vacina varchar(50) not null,
+temp_max int not null,
+temp_min int not null);
 
-
-
-/* para sql server - remoto - produção */
-
-CREATE TABLE usuario (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50),
-);
-
-CREATE TABLE aviso (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	titulo VARCHAR(100),
-    descricao VARCHAR(150),
-	fk_usuario INT FOREIGN KEY REFERENCES usuario(id)
-); 
-
-CREATE TABLE medida (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	temperatura DECIMAL,
-	umidade DECIMAL,
-	momento DATETIME,
-	fk_aquario INT
-);
-
-
+create table registro (
+id_registro int not null primary key auto_increment,
+registro decimal not null,
+data_horario datetime default current_timestamp not null,
+fk_sensor int not null,
+foreign key (fk_sensor)
+references sensor(id_sensor),
+fk_empresa int not null,
+foreign key (fk_empresa)
+references empresa(id_empresa),
+fk_localidade int not null,
+foreign key (fk_localidade)
+references localidade(id_localidade),
+fk_parametro int not null,
+foreign key (fk_parametro)
+references parametro(id_parametro));
