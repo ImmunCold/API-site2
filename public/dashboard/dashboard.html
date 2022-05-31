@@ -91,23 +91,23 @@ height: 65%;
 
     
 
-      <div onclick="popup(), obterDadosGrafico(1)"  style="background-color: green;" class="sensores" id="sensor1">
+      <div onclick="popup(), obterDadosGrafico(4)"  style="background-color: green;" class="sensores" id="sensor1">
           <h2>Sensor 1<h2>
               <h1>5°C</h1>
       </div>
 
 
-      <div onclick="popup(), obterDadosGrafico(4)"  style="background-color: green;" class="sensores" id="sensor1">
+      <div onclick="popup(), obterDadosGrafico(5)"  style="background-color: green;" class="sensores" id="sensor2">
         <h2>Sensor 2<h2>
             <h1>5°C</h1>
     </div>
 
-    <div onclick="popup(), obterDadosGrafico(4)"  style="background-color: green;" class="sensores" id="sensor1">
+    <div onclick="popup(), obterDadosGrafico(6)"  style="background-color: green;" class="sensores" id="sensor3">
         <h2>Sensor 3<h2>
             <h1>5°C</h1>
     </div>
 
-    <div onclick="popup(), obterDadosGrafico(4)"  style="background-color: green;" class="sensores" id="sensor1">
+    <div onclick="popup(), obterDadosGrafico(7)"  style="background-color: green;" class="sensores" id="sensor7">
         <h2>Sensor 4<h2>
             <h1>5°C</h1>
     </div>
@@ -446,6 +446,10 @@ height: 65%;
                     var tituloAquario = document.getElementById("sensor1")
 
                     tituloAquario.innerHTML = `<h2>Sensor 1</h2> <h1>${novoRegistro[0].lm35} °C</h1>`
+
+                    var tituloAquario = document.getElementById("sensor1")
+
+tituloAquario.innerHTML = `<h2>Sensor 1</h2> <h1>${novoRegistro[0].lm35} °C</h1>`
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');

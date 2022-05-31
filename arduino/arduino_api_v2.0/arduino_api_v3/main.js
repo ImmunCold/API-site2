@@ -51,11 +51,29 @@ const serial = async (
         valoresLm35Temperatura.push(lm35Temperatura);
         // valoresChave.push(chave);
 
+        var lm35Temperatura1 = lm35Temperatura * 1.2
+        var lm35Temperatura2 = lm35Temperatura * 0.3
+        var lm35Temperatura3 = lm35Temperatura * 2.1
+
+
         if (HABILITAR_OPERACAO_INSERIR) {
             await poolBancoDados.execute(
-                'INSERT INTO hist_medicao (lm35, fk_sensor) VALUES (?,1)',
+                'INSERT INTO hist_medicao (lm35, fk_sensor) VALUES (?,4)',
                 [lm35Temperatura]
             );
+            await poolBancoDados.execute(
+                'INSERT INTO hist_medicao (lm35, fk_sensor) VALUES (?,5)',
+                [lm35Temperatura1]
+            );
+            await poolBancoDados.execute(
+                'INSERT INTO hist_medicao (lm35, fk_sensor) VALUES (?,6)',
+                [lm35Temperatura2]
+            );
+            await poolBancoDados.execute(
+                'INSERT INTO hist_medicao (lm35, fk_sensor) VALUES (?,7)',
+                [lm35Temperatura3]
+            );
+
         }
 
     });
@@ -69,6 +87,7 @@ const servidor = (
     // valoresDht11Temperatura,
     // valoresLuminosidade,
     valoresLm35Temperatura,
+    
     // valoresChave
 ) => {
     const app = express();
