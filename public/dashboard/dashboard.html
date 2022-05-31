@@ -77,7 +77,7 @@ height: 65%;
 
         <img src="../assets/icons/umidade.png" class="gifG"> 
         
-         <select id="selectSensores">
+         <select id="selectSensores" onchange="">
           <option value="#"> -Selecione- </option>
           <option value="geladeira"> -Geladeira- </option>
           <option value="transporte"> -Transporte- </option>
@@ -91,54 +91,49 @@ height: 65%;
 
     
 
-      <div onclick="popup(), obterDadosGrafico(4)"  style="background-color: green;" class="sensores" id="sensor1">
+      <div onclick="popup(), obterDadosGrafico(1)"  style="background-color: green;" class="sensores" id="sensor1">
           <h2>Sensor 1<h2>
               <h1>5°C</h1>
       </div>
 
 
-      <div onclick="popup(), obterDadosGrafico(5)"  style="background-color: green;" class="sensores" id="sensor2">
+      <div onclick="popup(), obterDadosGrafico(3)"  style="background-color: green;" class="sensores" id="sensor2">
         <h2>Sensor 2<h2>
             <h1>5°C</h1>
     </div>
 
-    <div onclick="popup(), obterDadosGrafico(6)"  style="background-color: green;" class="sensores" id="sensor3">
+    <div onclick="popup(), obterDadosGrafico(5)"  style="background-color: green;" class="sensores" id="sensor3">
         <h2>Sensor 3<h2>
             <h1>5°C</h1>
     </div>
 
-    <div onclick="popup(), obterDadosGrafico(7)"  style="background-color: green;" class="sensores" id="sensor7">
+    <div onclick="popup(), obterDadosGrafico(6)"  style="background-color: green;" class="sensores" id="sensor4">
         <h2>Sensor 4<h2>
             <h1>5°C</h1>
     </div>
-
-     
-          <!--<div onclick="popup2(), obterDadosGrafico(5)" style="background-color: rgb(255, 215, 0);" class="sensores alertaquente" id="sensor2">
-              <h2>Sensor 2<h2>
-                  <h1>7°C</h1>
-          </div>-->
-
-  
-  
+ 
 
     <div class="banner2">
 
         <div class="container">
 
             <div id="popup" class="popup">
-                <div>
-                <button class="button_img"><img src="../assets/icons/icon_error.png" onclick="fechar()"></button>
-                </div>
+                  
+                <button class="btnImg"> <img src="../assets/icons/icon_error.png" onclick="fechar()" class="imgFechar"> </button>
+                
+                <div class="caixaCanvas"> 
                 <canvas id="myChart"></canvas>
+                </div>
+
             </div>
         
           
-            <div id="popup2" class="popup">
+            <!-- <div id="popup2" class="popup">
                 <div>
                 <button class="button_img"><img class="fechar" src="../assets/icons/icon_error.png" onclick="fechar()"></button>
                 </div>
                 <canvas id="myChart2"></canvas>
-            </div>
+            </div> -->
 
         </div>
 
@@ -443,13 +438,117 @@ height: 65%;
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
                     proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
 
+                    
+                    
                     var tituloAquario = document.getElementById("sensor1")
+                    var registro1 = novoRegistro[0].lm35
+                    console.log(registro1) 
+                    tituloAquario.innerHTML = `<h2>Sensor 1</h2> <h1>${registro1} °C</h1>`
 
-                    tituloAquario.innerHTML = `<h2>Sensor 1</h2> <h1>${novoRegistro[0].lm35} °C</h1>`
+                    if (registro1 >= 4.49 && registro1 <= 6.07) {
 
-                    var tituloAquario = document.getElementById("sensor1")
+                        sensor1.style.backgroundColor = 'green'
 
-tituloAquario.innerHTML = `<h2>Sensor 1</h2> <h1>${novoRegistro[0].lm35} °C</h1>`
+                    } else if (registro1 >= 6.08 && registro1 <= 7.47) {
+
+                        sensor1.style.backgroundColor = 'yellow'
+
+                    } else if (registro1 >= 7.48) {
+
+                        sensor1.style.backgroundColor = 'red'
+
+                    } else if (registro1 >= 2.54 && registro1 <= 4.48) {
+
+                        sensor1.style.backgroundColor = 'blue'
+
+                    } else {
+
+                        sensor1.style.backgroundColor = 'purple'
+
+                    }
+
+                    var tituloAquario2 = document.getElementById("sensor2")
+                    var registro2 = novoRegistro[0].lm35 * 1.2
+                    console.log(registro2) 
+                    tituloAquario2.innerHTML = `<h2>Sensor 2</h2> <h1>${registro2.toFixed(2)} °C</h1>`
+
+                    if (registro2 >= 4.49 && registro2 <= 6.07) {
+
+                        sensor2.style.backgroundColor = 'green'
+
+                    } else if (registro2 >= 6.08 && registro2 <= 7.47) {
+
+                        sensor2.style.backgroundColor = 'yellow'
+
+                    } else if (registro2 >= 7.48) {
+
+                        sensor2.style.backgroundColor = 'red'
+                        
+
+                    } else if (registro2 >= 2.54 && registro2 <= 4.48) {
+
+                        sensor2.style.backgroundColor = 'blue'
+
+                    } else {
+
+                        sensor2.style.backgroundColor = 'purple'
+
+                    }
+
+                    var tituloAquario3 = document.getElementById("sensor3")
+                    var registro3 = novoRegistro[0].lm35 * 0.3
+                    console.log(registro3) 
+                    tituloAquario3.innerHTML = `<h2>Sensor 3</h2> <h1>${registro3.toFixed(2)} °C</h1>`
+
+                    if (registro3 >= 4.49 && registro3 <= 6.07) {
+
+                        sensor3.style.backgroundColor = 'green'
+
+                    } else if (registro3 >= 6.08 && registro3 <= 7.47) {
+
+                        sensor3.style.backgroundColor = 'yellow'
+
+                    } else if (registro3 >= 7.48) {
+
+                        sensor3.style.backgroundColor = 'red'
+
+                    } else if (registro3 >= 2.54 && registro3 <= 4.48) {
+
+                        sensor3.style.backgroundColor = 'blue'
+
+                    } else {
+
+                        sensor3.style.backgroundColor = 'purple'
+
+                    }
+
+                    var tituloAquario4 = document.getElementById("sensor4")
+                    var registro4 = novoRegistro[0].lm35 * 2.1
+                    console.log(registro4) 
+                    tituloAquario4.innerHTML = `<h2>Sensor 4</h2> <h1>${registro4.toFixed(2)} °C</h1>`
+
+                    if (registro4 >= 4.49 && registro4 <= 6.07) {
+
+                        sensor4.style.backgroundColor = 'green'
+
+                    } else if (registro4 >= 6.08 && registro4 <= 7.47) {
+
+                        sensor4.style.backgroundColor = 'yellow'
+
+                    } else if (registro4 >= 7.48) {
+
+                        sensor4.style.backgroundColor = 'red'
+
+                    } else if (registro4 >= 2.54 && registro4 <= 4.48) {
+
+                        sensor4.style.backgroundColor = 'blue'
+
+                    } else {
+
+                        sensor4.style.backgroundColor = 'purple'
+
+                    }
+
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
