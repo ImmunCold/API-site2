@@ -98,17 +98,17 @@ height: 65%;
 
 
       <div onclick="popup(), obterDadosGrafico(4)"  style="background-color: green;" class="sensores" id="sensor1">
-        <h2>Sensor 1<h2>
+        <h2>Sensor 2<h2>
             <h1>5°C</h1>
     </div>
 
     <div onclick="popup(), obterDadosGrafico(4)"  style="background-color: green;" class="sensores" id="sensor1">
-        <h2>Sensor 1<h2>
+        <h2>Sensor 3<h2>
             <h1>5°C</h1>
     </div>
 
     <div onclick="popup(), obterDadosGrafico(4)"  style="background-color: green;" class="sensores" id="sensor1">
-        <h2>Sensor 1<h2>
+        <h2>Sensor 4<h2>
             <h1>5°C</h1>
     </div>
 
@@ -126,22 +126,20 @@ height: 65%;
         <div class="container">
 
             <div id="popup" class="popup">
+                <div>
+                <button class="button_img"><img src="../assets/icons/icon_error.png" onclick="fechar()"></button>
+                </div>
                 <canvas id="myChart"></canvas>
-                <button class="button_img" onclick="fechar()"><img src="../assets/icons/icon_error.png"></button>
             </div>
         
           
             <div id="popup2" class="popup">
+                <div>
+                <button class="button_img"><img class="fechar" src="../assets/icons/icon_error.png" onclick="fechar()"></button>
+                </div>
                 <canvas id="myChart2"></canvas>
-                <button class="button_img" onclick="fechar()"><img src="../assets/icons/icon_error.png"></button>
             </div>
 
-        </div>
-
-        <div id="divH" class="divHistorico">
-            
-          <div class="nomeH">Histórico</div>
-        
         </div>
 
 
@@ -251,6 +249,7 @@ height: 65%;
         var tituloAquario = document.getElementById("sensor1")
         tituloAquario.innerHTML = `<h2>Sensor 1</h2> <h1> 10 °C  </h1>`
     }
+    
 
     // O gráfico é construído com três funções:
     // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
@@ -297,10 +296,10 @@ height: 65%;
             labels: [],
             datasets: [
                 {
-                    yAxisID: 'y-umidade',
-                    label: 'Umidade',
-                    borderColor: '#32B9CD',
-                    backgroundColor: '#32b9cd8f',
+                    yAxisID: 'y-',
+                    label: '',
+                    borderColor: '#70b0da',
+                    backgroundColor: '#70b0da',
                     fill: true,
                     data: []
                 },
@@ -351,7 +350,7 @@ height: 65%;
                         type: 'linear',
                         display: false,
                         position: 'right',
-                        id: 'y-umidade',
+                        id: 'y-',
                         ticks: {
                             beginAtZero: true,
                             max: 100,
@@ -445,7 +444,8 @@ height: 65%;
                     proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
 
                     var tituloAquario = document.getElementById("sensor1")
-        tituloAquario.innerHTML = `<h2>Sensor 1</h2> <h1>${novoRegistro[0].lm35} °C</h1>`
+
+                    tituloAquario.innerHTML = `<h2>Sensor 1</h2> <h1>${novoRegistro[0].lm35} °C</h1>`
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
