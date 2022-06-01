@@ -18,22 +18,24 @@
         <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
 
         <style>
+
 .popup {
+
   display: none;
   position: fixed;
-top: 0; bottom: 0;
-left: 0; right: 0;
-margin: auto;
-padding: 0;
-border: 1px solid black;
-background-color: white;
-width: 60%;
-height: 65%;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+  margin: auto;
+  padding: 0;
+  border: 1px solid black;
+  background-color: white;
+  width: 60%;
+  height: 65%;
+
 }
 
-
-
         </style>
+
 </head>
 <body>
 
@@ -50,7 +52,7 @@ height: 65%;
 
     <div class="localV">
     <div class="textV"> Seja Bem-vindo,<span id="b_usuario"></span></div>
-  </div>
+    </div>
 
   <div class="container"> 
     <div class="textA"> Alertas de Temperatura </div>
@@ -64,6 +66,13 @@ height: 65%;
           <div class="metricas alertaquente"><h2>Alerta quente <br> <br>6,08°C - 7,47°<h2></div>
           <div class="metricas muitoquente"><h2>Critico quente<br><br> 7,48°C<h2></div>
           </div>
+
+          <div class="absolute">
+            <div class="notificacao" id="notificacaoRed"> Sensor 1</div>
+            <div class="notificacao" id="notificacaoPurple">  Sensor 1</div>
+            <div class="notificacao" id="notificacaoBlue">  Sensor 1</div>
+            <div class="notificacao" id="notificacaoYellow">  Sensor 1</div>
+            </div>
         
   </div>
 
@@ -87,9 +96,10 @@ height: 65%;
   </div>
 
 
-  <div class="container" id="container3">
-
     
+      <div class="bannerSensor">
+
+        <div class="container">
 
       <div onclick="popup(), obterDadosGrafico(1)"  style="background-color: green;" class="sensores" id="sensor1">
           <h2>Sensor 1<h2>
@@ -97,19 +107,23 @@ height: 65%;
       </div>
 
 
-      <div onclick="popup(), obterDadosGrafico(3)"  style="background-color: green;" class="sensores" id="sensor2">
+      <div onclick="popup(), obterDadosGrafico(2)"  style="background-color: green;" class="sensores" id="sensor2">
         <h2>Sensor 2<h2>
             <h1>5°C</h1>
     </div>
 
-    <div onclick="popup(), obterDadosGrafico(5)"  style="background-color: green;" class="sensores" id="sensor3">
+    <div onclick="popup(), obterDadosGrafico(3)"  style="background-color: green;" class="sensores" id="sensor3">
         <h2>Sensor 3<h2>
             <h1>5°C</h1>
     </div>
 
-    <div onclick="popup(), obterDadosGrafico(6)"  style="background-color: green;" class="sensores" id="sensor4">
+    <div onclick="popup(), obterDadosGrafico(4)"  style="background-color: green;" class="sensores" id="sensor4">
         <h2>Sensor 4<h2>
             <h1>5°C</h1>
+    </div>
+
+    </div>
+
     </div>
  
 
@@ -127,20 +141,9 @@ height: 65%;
 
             </div>
         
-          
-            <!-- <div id="popup2" class="popup">
-                <div>
-                <button class="button_img"><img class="fechar" src="../assets/icons/icon_error.png" onclick="fechar()"></button>
-                </div>
-                <canvas id="myChart2"></canvas>
-            </div> -->
-
         </div>
 
-
     </div>
-
-  </div>
 
 </body>
 
@@ -148,18 +151,14 @@ height: 65%;
 
 <script>
 
+
   function popup() {
   document.getElementById('popup').style.display = 'block'
   }
 
 
-  //function popup2() {
-  //document.getElementById('popup2').style.display = 'block'
-  //}
-
   function fechar(){
     document.getElementById('popup').style.display = 'none'
-    //document.getElementById('popup2').style.display = 'none'
   }
 
 
@@ -234,9 +233,14 @@ height: 65%;
 
     let proximaAtualizacao;
 
-    window.onload = obterDadosGrafico(4);
+    // window.onload = obterDadosGrafico(1);
+    // window.onload = obterDadosGrafico(2);
+    // window.onload = obterDadosGrafico(3);
+    // window.onload = obterDadosGrafico(4);
 
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    var usuario = sessionStorage.NOME_USUARIO;
+
+    b_usuario.innerHTML = " " + usuario
 
     verificar_autenticacao();
 
@@ -414,6 +418,10 @@ height: 65%;
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
+    // var registro_externo = []
+
+
+
     function atualizarGrafico(idAquario, dados) {
 
         fetch(`/medidas/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
@@ -438,7 +446,12 @@ height: 65%;
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
                     proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
 
-                    
+                    // var HistData = new Date() 
+                    // var dia = String(HistData.getDate()).padStart(2, '0')
+                    // var mes = String(HistData.getMonth() + 1).padStart(2, '0')
+                    // var ano = HistData.getUTCFullYear()
+
+                    // var DiaAtual = `${dia}/${mes}/${ano}`
                     
                     var tituloAquario = document.getElementById("sensor1")
                     var registro1 = novoRegistro[0].lm35
@@ -452,11 +465,14 @@ height: 65%;
                     } else if (registro1 >= 6.08 && registro1 <= 7.47) {
 
                         sensor1.style.backgroundColor = 'yellow'
+                        // notificacaoYellow.innerHTML = `Cuidado Sensor 1 <br> Temperatura esta Esquentando`
+                        // notificacaoYellow.style.display = 'block'
+
 
                     } else if (registro1 >= 7.48) {
 
                         sensor1.style.backgroundColor = 'red'
-
+                        
                     } else if (registro1 >= 2.54 && registro1 <= 4.48) {
 
                         sensor1.style.backgroundColor = 'blue'
@@ -469,7 +485,6 @@ height: 65%;
 
                     var tituloAquario2 = document.getElementById("sensor2")
                     var registro2 = novoRegistro[0].lm35 * 1.2
-                    console.log(registro2) 
                     tituloAquario2.innerHTML = `<h2>Sensor 2</h2> <h1>${registro2.toFixed(2)} °C</h1>`
 
                     if (registro2 >= 4.49 && registro2 <= 6.07) {
@@ -479,6 +494,8 @@ height: 65%;
                     } else if (registro2 >= 6.08 && registro2 <= 7.47) {
 
                         sensor2.style.backgroundColor = 'yellow'
+                        // notificacaoYellow.innerHTML = `Cuidado Sensor 2 <br> Temperatura esta Esquentando`
+                        // notificacaoYellow.style.display = 'block'
 
                     } else if (registro2 >= 7.48) {
 
@@ -496,8 +513,7 @@ height: 65%;
                     }
 
                     var tituloAquario3 = document.getElementById("sensor3")
-                    var registro3 = novoRegistro[0].lm35 * 0.3
-                    console.log(registro3) 
+                    var registro3 = novoRegistro[0].lm35 * 0.3 
                     tituloAquario3.innerHTML = `<h2>Sensor 3</h2> <h1>${registro3.toFixed(2)} °C</h1>`
 
                     if (registro3 >= 4.49 && registro3 <= 6.07) {
@@ -507,6 +523,8 @@ height: 65%;
                     } else if (registro3 >= 6.08 && registro3 <= 7.47) {
 
                         sensor3.style.backgroundColor = 'yellow'
+                        // notificacaoYellow.innerHTML = `Cuidado Sensor 3 <br> Temperatura esta Esquentando`
+                        // notificacaoYellow.style.display = 'block'
 
                     } else if (registro3 >= 7.48) {
 
@@ -516,6 +534,7 @@ height: 65%;
 
                         sensor3.style.backgroundColor = 'blue'
 
+
                     } else {
 
                         sensor3.style.backgroundColor = 'purple'
@@ -524,7 +543,6 @@ height: 65%;
 
                     var tituloAquario4 = document.getElementById("sensor4")
                     var registro4 = novoRegistro[0].lm35 * 2.1
-                    console.log(registro4) 
                     tituloAquario4.innerHTML = `<h2>Sensor 4</h2> <h1>${registro4.toFixed(2)} °C</h1>`
 
                     if (registro4 >= 4.49 && registro4 <= 6.07) {
@@ -534,10 +552,15 @@ height: 65%;
                     } else if (registro4 >= 6.08 && registro4 <= 7.47) {
 
                         sensor4.style.backgroundColor = 'yellow'
+                        // notificacaoYellow.innerHTML = `Cuidado Sensor 4 <br> Temperatura esta Esquentando`
+                        // notificacaoYellow.style.display = 'block'
 
                     } else if (registro4 >= 7.48) {
 
                         sensor4.style.backgroundColor = 'red'
+
+                        // notificacaoRed.innerHTML = `Cuidado Temperatura Quente`
+                        // notificacaoRed.style.display = 'block'
 
                     } else if (registro4 >= 2.54 && registro4 <= 4.48) {
 
