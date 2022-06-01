@@ -66,11 +66,11 @@ const serial = async (
                 [lm35Temperatura1]
             );
             await poolBancoDados.execute(
-                'INSERT INTO hist_medicao (lm35, fk_sensor) VALUES (?,5)',
+                'INSERT INTO hist_medicao (lm35, fk_sensor) VALUES (?,3)',
                 [lm35Temperatura2]
             );
             await poolBancoDados.execute(
-                'INSERT INTO hist_medicao (lm35, fk_sensor) VALUES (?,6)',
+                'INSERT INTO hist_medicao (lm35, fk_sensor) VALUES (?,4)',
                 [lm35Temperatura3]
             );
 
