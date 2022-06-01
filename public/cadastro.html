@@ -85,6 +85,10 @@
                     <span id="span_conf_senha"></span>
                     </div>
 
+                    <div class="div8">
+                    <span id="span_emp"> Codigo da Sua Empresa </span>
+                    </div>
+
                     <div class="input_codigo_empresa">
                         <input id="codigoInput" type="number" placeholder="Digite o código da empresa" required>
                     </div>
@@ -236,7 +240,7 @@
      
     } else {
 
-        span_senha.innerHTML = `Senha <span style='color:green;'>OK</span>`   
+        span_senha.innerHTML = `<span style='color:green;'>Senha  OK</span>`   
 
     }
 
@@ -311,6 +315,8 @@
         }).then(function (resposta) {
 
             console.log("resposta: ", resposta);
+
+            Response.redirected = true
 
             if (resposta.ok) {
                 /*window.location = 'login.html';*/
