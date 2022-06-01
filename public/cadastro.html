@@ -49,42 +49,26 @@
     <div class="banner">
         <div class="container login">
             <div class="card-cadastro">
-                <h2 class="cadastro">Cadastrar Empresa</h2>
+                <h2 class="cadastro">Cadastrar Usuário</h2>
                     <form>
                     <div class="cards_input nome">
                     <input id="nomeInput" type="text" placeholder="Digite seu nome" onkeyup="keyNome()" required minlength="2" maxlength="50">
-                    <input id="representanteInput" type="text" placeholder="Digite o nome da empresa" onkeyup="keyNomeEmpresa()" required minlength="2" maxlength="50">
                     </div>
 
                     <div class="div1">
                     <span id="span_nome"></span>
-                    <span id="span_nome_empresa"></span>
-                    </div>
-
-                    <div class="cards_cpnj">
-                    <input id="cnpjInput" type="number" placeholder="Digite seu CNPJ" onkeyup="keyCnpj()" required minlength="14" maxlength="14">
-                    
-                    <input id="cepInput" placeholder="Digite seu CEP" onkeyup="keyCep()" required minlength="8"   maxlength="8">
-                    </div>
-
-                    <div class="div2">
-                    <span id="span_cnpj">Inserir somente os numeros</span>
-                    <span id="span_cep">Inserir somente os numeros</span>
                     </div>
 
                     <div class="cards_endereco">
-                    <input id="enderecoInput" type="text" placeholder="Digite seu endereço" onkeyup="keyEndereco()" required maxlength="150">
-                    
                     <input id="telefoneInput" type="number" placeholder="Telefone (xx)xxxx-xxxx" onkeyup="keyTelefone()" required maxlength="13">
                     </div>
 
                     <div class="div3">
-                    <span id="span_endereco"> Inserir o numero do local</span>
                     <span id="span_telefone"> Inserir somente os numeros </span>
                     </div>
 
                     <div class="card_email">
-                    <input id="emailInput" type="text" placeholder="Digite seu email" required maxlength="65">
+                    <input id="emailInput" type="text" placeholder="Digite seu email" onkeyup="keyEmail()" required maxlength="65">
                     </div>
 
                     <div class="div4">
@@ -99,6 +83,10 @@
                     <div class="div5">
                     <span id="span_senha">A senha deve conter: No minímo de (6) Numeros</span>
                     <span id="span_conf_senha"></span>
+                    </div>
+
+                    <div class="input_codigo_empresa">
+                        <input id="codigoInput" type="number" placeholder="Digite o código da empresa" required>
                     </div>
 
                     <button id="button" class="btn" type="button" onclick="cadastrar()">Cadastrar</button>
@@ -207,6 +195,20 @@
         }
   }
 
+  function keyEmail() {
+      var email = emailInput.value 
+
+      if (email.length > 15 && email.length < 80 && email.indexOf("@") > 2 && email.indexOf(".com") > 3){
+
+        span_email.innerHTML = `<span style='color: green;'> Email válido </span>`
+
+      } else {
+
+          span_email.innerHTML = `<span style='color: red;'> Email Inválido (Necessita de "@" e ".com" no email) </span>`
+
+      }
+  }
+
    function keyTelefone(){
        var telefone = telefoneInput.value
 
@@ -268,11 +270,8 @@
         var emailVar = emailInput.value;
         var senhaVar = senhaInput.value;
         var confirmacaoSenhaVar = confirmacaoSenhaInput.value;
-        var representanteVar = representanteInput.value;
-        var cnpjVar = cnpjInput.value;
-        var cepVar = cepInput.value;
-        var enderecoVar = enderecoInput.value;
         var telefoneVar = telefoneInput.value;
+        var codigoVar = codigoInput.value;
 
         if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
             cardCadastro.style.display = "block"
@@ -306,11 +305,8 @@
                 nomeServer: nomeVar,
                 emailServer: emailVar,
                 senhaServer: senhaVar,
-                representanteServer: representanteVar,
-                cnpjServer: cnpjVar,
-                cepServer: cepVar,
-                enderecoServer: enderecoVar,
-                telefoneServer: telefoneVar
+                telefoneServer: telefoneVar,
+                codigoServer: codigoVar
             })
         }).then(function (resposta) {
 

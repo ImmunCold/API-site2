@@ -94,8 +94,15 @@
 
         if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
             cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "Ops, e-mail inválido! Verifique e tente novamente.";
+            mensagem_erro.innerHTML = "Email inválido";
             
+            setInterval(sumirMensagem, 4000)
+            return false;
+
+        } else if (senhaVar.length < 6) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Senha incorreta";
+
             setInterval(sumirMensagem, 4000)
             return false;
         }
@@ -123,9 +130,9 @@
                     console.log(json);
                     console.log(JSON.stringify(json));
 
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.EMAIL_USUARIO = json.email_usuario;
+                    sessionStorage.NOME_USUARIO = json.nome_usuario;
+                    sessionStorage.ID_USUARIO = json.id_usuario;
 
                     cardredirecionar.style.display = "block"    
                     mensagem_redirecionar.innerHTML = "<img src='assets/img/gif_loading.gif'>";
@@ -137,6 +144,12 @@
                 });
 
             } else {
+
+                cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Email e/ou senha inválido(s)";
+
+            setInterval(sumirMensagem, 4000)
+            return false;
 
                 console.log("Houve um erro ao tentar realizar o login!");
 

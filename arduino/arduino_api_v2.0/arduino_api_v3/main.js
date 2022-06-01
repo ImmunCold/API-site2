@@ -51,26 +51,26 @@ const serial = async (
         valoresLm35Temperatura.push(lm35Temperatura);
         // valoresChave.push(chave);
 
-        var lm35Temperatura1 = lm35Temperatura * 1.2
+        var lm35Temperatura1 = lm35Temperatura * 0.35
         var lm35Temperatura2 = lm35Temperatura * 0.3
-        var lm35Temperatura3 = lm35Temperatura * 2.1
+        var lm35Temperatura3 = lm35Temperatura * 0.1
 
 
         if (HABILITAR_OPERACAO_INSERIR) {
             await poolBancoDados.execute(
-                'INSERT INTO hist_medicao (lm35, fk_sensor) VALUES (?,4)',
+                'INSERT INTO hist_medicao (lm35, fk_sensor) VALUES (?,1)',
                 [lm35Temperatura]
             );
             await poolBancoDados.execute(
-                'INSERT INTO hist_medicao (lm35, fk_sensor) VALUES (?,5)',
+                'INSERT INTO hist_medicao (lm35, fk_sensor) VALUES (?,2)',
                 [lm35Temperatura1]
             );
             await poolBancoDados.execute(
-                'INSERT INTO hist_medicao (lm35, fk_sensor) VALUES (?,6)',
+                'INSERT INTO hist_medicao (lm35, fk_sensor) VALUES (?,5)',
                 [lm35Temperatura2]
             );
             await poolBancoDados.execute(
-                'INSERT INTO hist_medicao (lm35, fk_sensor) VALUES (?,7)',
+                'INSERT INTO hist_medicao (lm35, fk_sensor) VALUES (?,6)',
                 [lm35Temperatura3]
             );
 
